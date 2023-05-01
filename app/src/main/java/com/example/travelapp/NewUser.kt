@@ -1,4 +1,4 @@
-package com.example.myapplication
+package com.example.travelapp
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,50 +11,40 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 
 @Composable
-fun New(){
-    val destination = remember {
+fun newUserScreen(){
+    val username = remember {
         mutableStateOf("")
     }
-    val startDate = remember {
+    val password = remember {
         mutableStateOf("")
     }
-    val endDate = remember {
-        mutableStateOf("")
-    }
-    val budget = remember {
+    val confirmPassword = remember {
         mutableStateOf("")
     }
     Column() {
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Destination") },
-            value = destination.value,
+            label = { Text(text = "Username") },
+            value = username.value,
             onValueChange = {
-                destination.value = it
+                username.value = it
+                          },
+        )
+        OutlinedTextField(
+            modifier = Modifier.fillMaxWidth(),
+            label = { Text(text = "Password") },
+            value = password.value,
+            onValueChange = {
+                password.value = it
             },
         )
         OutlinedTextField(
             modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Start Date") },
-            value = startDate.value,
+            label = { Text(text = "Confirm password") },
+            value = confirmPassword.value,
             onValueChange = {
-                startDate.value = it
-            },
-        )
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "End Date") },
-            value = endDate.value,
-            onValueChange = {
-                endDate.value = it
-            },
-        )
-        OutlinedTextField(
-            modifier = Modifier.fillMaxWidth(),
-            label = { Text(text = "Budget") },
-            value = budget.value,
-            onValueChange = {
-                budget.value = it
+                confirmPassword.value = it
+                // confirmPassword should be equal to password
             },
         )
         Button(onClick = {
@@ -62,6 +52,5 @@ fun New(){
         }) {
             Text(text = "TO DO")
         }
-
     }
 }
